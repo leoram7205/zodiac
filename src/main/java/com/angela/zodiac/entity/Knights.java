@@ -3,17 +3,22 @@ package com.angela.zodiac.entity;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Min;
 
 @Document(collection = "knights") 
 public class Knights {
     @Id    private String id;
 
+    @NotBlank(message = "El Nombre obligatorio")
     @Field("name")
     private String name;
 
+    @NotBlank(message = "Constellation is mandatory")
     @Field("constellation")
     private String constellation;
 
+    @Min(value = 1, message = "Rank must be at least 1")
     @Field("rank")
     private String rank;
 
